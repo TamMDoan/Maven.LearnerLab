@@ -1,14 +1,14 @@
 package io.zipcoder.interfaces;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
-public class People extends ArrayList<Person> {
-    List<Person> personList;
+public class People extends ArrayList<Person> implements Iterable<Person> {
+    List<Person> personList = new ArrayList<>();
 
     public People(){
-        personList = new ArrayList<>();
     }
 
     public boolean add(Person p){
@@ -51,5 +51,16 @@ public class People extends ArrayList<Person> {
         return this.personList.size();
     }
 
+    public Person[] toArray(){
+        Person[] persons = new Person[count()];
+        return this.personList.toArray(persons);
+    }
 
+    public Iterator<Person> iterator(){
+        return this.personList.listIterator();
+    }
+
+    public List<Person> getPersonList(){
+        return this.personList;
+    }
 }

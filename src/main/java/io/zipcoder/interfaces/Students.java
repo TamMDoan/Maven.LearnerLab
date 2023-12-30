@@ -1,20 +1,26 @@
 package io.zipcoder.interfaces;
 
-public final class Students extends People {
+public class Students extends People {
     private static final Students INSTANCE = new Students();
 
-    Students(){
-        String[] names = new String[]{"Tam", "Tevin", "Christy", "Cesily", "Jia", "Louie", "Gowri", "Nate", "Joey", "Imir", "Corinne","Mike"};
-        long id = 1L;
-
-        for(int i = 0; i < names.length; i++){
-            Person p = new Person(id, names[i]);
-            INSTANCE.add(p);
-            id++;
-        }
+    private Students(){
+        populateInstance();
     }
 
-    public Students getInstance(){
+    public static Students getInstance(){
+        if(INSTANCE == null){
+            return new Students();
+        }
         return INSTANCE;
+    }
+
+    private void populateInstance(){
+        String[] names = new String[]{"Tam", "Tevin", "Christy", "Cesily", "Jia", "Louie", "Gowri", "Nate", "Joey", "Imir", "Corinne","Mike"};
+        long id = 1L;
+        for (String name : names) {
+            Student p = new Student(id, name);
+            this.getPersonList().add(p);
+            id++;
+        }
     }
 }

@@ -11,7 +11,7 @@ public class TestPeople {
         People people = new People();
 
         Assert.assertTrue(people.add(p));
-        Assert.assertTrue(people.size() > 0);
+        Assert.assertTrue(people.count() > 0);
     }
 
     @Test
@@ -23,9 +23,9 @@ public class TestPeople {
         people.add(p);
         people.add(p2);
 
-        people.remove(0);
+        people.remove(p);
 
-        Assert.assertTrue(people.size() == 1);
+        Assert.assertTrue(people.count() == 1);
     }
 
     @Test
